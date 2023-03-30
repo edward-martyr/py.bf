@@ -29,10 +29,11 @@ class _Transpiler:
     def transpile(self):
         self._c_code_builder = deque()
         if self.code.count("[") != self.code.count("]"):
-            stderr.write(f"Error: Mismatched brackets in {self.filename}\n")
+            stderr.write(f"Syntax Error: Mismatched brackets in {self.filename}\n")
             return
         self._c_code_builder.append(
-            "#include<stdio.h>\nint main(){char a[30000]={0};char*p=a;",
+            # "#include<stdio.h>\nint main(){char a[30000]={0};char*p=a;",
+            f"/*transpiled from brainfuck with py.bf*/\n#include<stdio.h>\nint main(){{char a[{self.size}]={{0}};char*p=a;",
         )
         while self._pos < len(self.code):
             self._step()

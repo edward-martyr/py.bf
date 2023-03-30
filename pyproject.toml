@@ -42,7 +42,7 @@ name = "py.bf"
 authors = [
     { name = "Yuanhao 'Nyoeghau' Chen", email = "nyoeghau@nyoeghau.com" },
 ]
-description = "Brainfuck interpreter and C transpiler/compiler."
+description = "py.bf: Python interpreter and C transpiler/compiler for brainfuck"
 dynamic = ["version"]
 readme = "README.md"
 license = { file = "LICENSE" }
