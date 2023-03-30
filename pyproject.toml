@@ -42,7 +42,7 @@ name = "py.bf"
 authors = [
     { name = "Yuanhao 'Nyoeghau' Chen", email = "nyoeghau@nyoeghau.com" },
 ]
-description = "Brainfuck interpreter in Python."
+description = "Brainfuck interpreter and C transpiler/compiler."
 dynamic = ["version"]
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -55,7 +55,7 @@ classifiers = [
     "Topic :: Software Development :: Interpreters",
 ]
 requires-python = ">=3.10"
-dependencies = []
+dependencies = ["setuptools>=62"]
 
 [project.scripts]
 pybf = "pybf.__main__:main"

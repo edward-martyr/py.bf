@@ -8,17 +8,31 @@ from .utils import BaseTestCase
 
 
 class TestInterpreter(BaseTestCase):
-    def test_hello_world(self) -> None:
+    def test_hello_world(self):
         string_io = StringIO()
-        code = Path("tests/hello_world.bf").read_text()
-        interpreter = Interpreter(code, output=string_io)
+        file = Path("tests/hello_world.bf")
+        code = file.read_text()
+        interpreter = Interpreter(code, filename=str(file), output=string_io)
         interpreter.run()
         self.assertEqual(string_io.getvalue(), "Hello World!\n")
 
-    def test_bash_hello_world(self) -> None:
+    def test_bash_hello_world(self):
         self.assertEqual(
             check_output(
                 "python -m pybf hello_world.bf".split(),
+                cwd="tests",
+            )
+            .decode()
+            .strip(),
+            "Hello World!",
+        )
+
+
+class TestCompiler(BaseTestCase):
+    def test_bash_hello_world(self):
+        self.assertEqual(
+            check_output(
+                "python -m pybf hello_world.bf -cr".split(),
                 cwd="tests",
             )
             .decode()
