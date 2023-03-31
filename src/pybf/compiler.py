@@ -1,4 +1,5 @@
 from collections import deque
+from os import name as os_name
 from pathlib import Path
 from subprocess import run
 from sys import stderr, stdout
@@ -99,4 +100,7 @@ class Compiler:
         compiler.link_executable([str(o_file)], str(exe_file))
 
     def run(self):
-        run(f"./{self.output_filename}", stdout=self.output, shell=True)
+        if os_name == "nt":
+            run(f"{self.output_filename}", stdout=self.output, shell=True)
+        else:
+            run(f"./{self.output_filename}", stdout=self.output, shell=True)
