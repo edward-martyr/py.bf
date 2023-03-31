@@ -3,6 +3,7 @@ name: CI/CD
 on:
   push:
     branches: [master]
+    tags: ["*"]
   pull_request:
     branches: [master]
 
@@ -86,7 +87,7 @@ jobs:
         with:
           packages-dir: build
           password: ${{ secrets.PYPI_API_TOKEN }}
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+        if: startsWith(github.ref, 'refs/tags/v')
       - name: Release package to GitHub
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
