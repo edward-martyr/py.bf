@@ -1,5 +1,4 @@
 from collections import deque
-from os import name as os_name
 from pathlib import Path
 from subprocess import run
 from sys import stderr, stdout
@@ -33,7 +32,6 @@ class _Transpiler:
             stderr.write(f"Syntax Error: Mismatched brackets in {self.filename}\n")
             return
         self._c_code_builder.append(
-            # "#include<stdio.h>\nint main(){char a[30000]={0};char*p=a;",
             f"/*transpiled from brainfuck with py.bf*/\n#include<stdio.h>\nint main(){{char a[{self.size}]={{0}};char*p=a;",
         )
         while self._pos < len(self.code):
@@ -100,7 +98,4 @@ class Compiler:
         compiler.link_executable([str(o_file)], str(exe_file))
 
     def run(self):
-        if os_name == "nt":
-            run(f"{self.output_filename}", stdout=self.output, shell=True)
-        else:
-            run(f"./{self.output_filename}", stdout=self.output, shell=True)
+        run(f"./{self.output_filename}", stdout=self.output, shell=True)
