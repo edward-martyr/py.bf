@@ -38,7 +38,7 @@ archs = ["universal2"]
 test-skip = "*_arm64 *_universal2:arm64"
 
 [project]
-name = "py.bf"
+name = "ng.pybf"
 authors = [
     { name = "Yuanhao 'Nyoeghau' Chen", email = "nyoeghau@nyoeghau.com" },
 ]

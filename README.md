@@ -1,18 +1,18 @@
-# `py.bf`
+# `pybf`
 
-`py.bf` contains a Python interpreter and a C transpiler/compiler for brainfuck.
+`pybf` contains a Python interpreter and a C transpiler/compiler for brainfuck.
 
 ## Installation
 
 ```bash
-pip install py.bf
+pip install ng.pybf
 ```
 
 ## Usage
 
 ### CLI
 
-```bash
+```text
 usage: pybf [-h] [-p] [-c] [--compile] [-r] [filename]
 
 Python interpreter and C transpiler/compiler for brainfuck
